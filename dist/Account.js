@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Account = void 0;
 class Account {
     constructor(id, customer, payment, billingAddress, isClosed, open, close) {
+        this.orderLists = [];
         this.id = id;
         this.customer = customer;
         this.payment = payment;
@@ -11,6 +12,16 @@ class Account {
         this.open = open;
         this.close = close;
     }
+    // constructor(id:string, customer:Customer, shoppingCart:ShoppingCart, payment:Payment, billingAddress:string, isClosed:boolean, open:string, close:string) {
+    //     this.id = id;
+    //     this.customer = customer;
+    //     this.shoppingCart = shoppingCart;
+    //     this.payment = payment;
+    //     this.billingAddress = billingAddress;
+    //     this.isClosed = isClosed;
+    //     this.open = open;
+    //     this.close = close;
+    // }
     getId() {
         return this.id;
     }
@@ -32,6 +43,9 @@ class Account {
     getClose() {
         return this.close;
     }
+    // public addOrderByCart():void{
+    //     this.orderLists.
+    // }
     setId(id) {
         this.id = id;
     }
@@ -53,6 +67,10 @@ class Account {
     setClose(close) {
         this.close = close;
     }
+    // public makeOrder(order:Order):void {
+    //     order.addLineItem(this.shoppingCart.getListItem());
+    //     this.orderLists.push(order);
+    // }
     // private dateFormat(date:Date):string{
     //     let d = new Date(date);
     //     return d.toLocaleTimeString();

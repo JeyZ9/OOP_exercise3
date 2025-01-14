@@ -30,7 +30,8 @@ class WebUser {
         this.shoppingCart = shop;
     }
     toString() {
-        return `WebUser[loginId=${this.loginId}, password=${this.password}, state=${this.state}, shopping=${this.shoppingCart.toString()}]`;
+        // return `WebUser[loginId=${this.loginId}, password=${this.password}, state=${this.state}, shopping=${this.shoppingCart.toString()}]`
+        return `WebUser[loginId=${this.loginId}, password=${this.password}, state=${this.state}]`;
     }
 }
 exports.WebUser = WebUser;
