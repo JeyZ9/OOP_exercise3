@@ -1,9 +1,14 @@
 import { Account } from './Account';
+import { LineItem } from './LineItem';
 
 export class ShoppingCart{
     private createDate:string;
     private account:Account;
+    private lineItems:LineItem[] = [];
 
+    // constructor(createDate:string){
+    //     this.createDate = createDate;
+    // }
     constructor(createDate:string, account:Account){
         this.createDate = createDate;
         this.account = account;
@@ -25,7 +30,15 @@ export class ShoppingCart{
         this.account = acc;
     }
 
+    public addLineItem(item:LineItem):void{
+        this.lineItems.push(item);
+    }
+
+    public getListItem():string[]{
+        return this.lineItems.map(item => item.toString());
+    }
+
     public toString():string {
-        return `Shopping[createDate=${this.createDate}, account=${this.account.toString()}]`;
+        return `Shopping[createDate=${this.createDate}, account=${this.account.toString()}, lineItem={${this.lineItems.map(item => item.toString()).join(",")}}]`;
     }
 }

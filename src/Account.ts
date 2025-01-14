@@ -1,9 +1,13 @@
 import { Customer } from "./Customer";
+import { Order } from "./Order";
 import { Payment } from "./Payment";
+import { ShoppingCart } from "./ShoppingCart";
 
 export class Account{
     private id:string;
     private customer:Customer;
+    private orderLists:Order[] = [];
+    // private shoppingCart:ShoppingCart;
     private payment:Payment;
     private billingAddress:string;
     private isClosed:boolean;
@@ -19,6 +23,16 @@ export class Account{
         this.open = open;
         this.close = close;
     }
+    // constructor(id:string, customer:Customer, shoppingCart:ShoppingCart, payment:Payment, billingAddress:string, isClosed:boolean, open:string, close:string) {
+    //     this.id = id;
+    //     this.customer = customer;
+    //     this.shoppingCart = shoppingCart;
+    //     this.payment = payment;
+    //     this.billingAddress = billingAddress;
+    //     this.isClosed = isClosed;
+    //     this.open = open;
+    //     this.close = close;
+    // }
 
     public getId():string{
         return this.id;
@@ -48,6 +62,10 @@ export class Account{
         return this.close;
     }
 
+    // public addOrderByCart():void{
+    //     this.orderLists.
+    // }
+
     public setId(id:string):void {
         this.id = id;
     }
@@ -75,6 +93,11 @@ export class Account{
     public setClose(close:string):void {
         this.close = close;
     }
+
+    // public makeOrder(order:Order):void {
+    //     order.addLineItem(this.shoppingCart.getListItem());
+    //     this.orderLists.push(order);
+    // }
 
     // private dateFormat(date:Date):string{
     //     let d = new Date(date);
