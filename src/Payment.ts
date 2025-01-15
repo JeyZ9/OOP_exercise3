@@ -4,9 +4,9 @@ export class Payment {
     private total:number;
     private details:string;
 
-    constructor(id:string, total:number, details:string){
+    constructor(id:string, paid:string, total:number, details:string){
         this.id = id;
-        this.paid = new Date().toLocaleDateString();
+        this.paid = paid;
         this.total = total;
         this.details = details;
     }
@@ -27,8 +27,8 @@ export class Payment {
         return this.details;
     }
 
-    public setPaid(date:string):void {
-        this.paid = date;
+    public setPaid(paid:string):void {
+        this.paid = paid;
     }
 
     public setTotal(total:number):void {

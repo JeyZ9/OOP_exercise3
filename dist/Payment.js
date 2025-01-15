@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Payment = void 0;
 class Payment {
-    constructor(id, total, details) {
+    constructor(id, paid, total, details) {
         this.id = id;
-        this.paid = new Date().toLocaleDateString();
+        this.paid = paid;
         this.total = total;
         this.details = details;
     }
@@ -20,8 +20,8 @@ class Payment {
     getDetail() {
         return this.details;
     }
-    setPaid(date) {
-        this.paid = date;
+    setPaid(paid) {
+        this.paid = paid;
     }
     setTotal(total) {
         this.total = total;

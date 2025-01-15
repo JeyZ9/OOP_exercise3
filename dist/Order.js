@@ -12,9 +12,7 @@ class Order {
         this.total = total !== null && total !== void 0 ? total : 0;
     }
     calculateTotal() {
-        let total = 0;
-        this.lineItems.forEach(item => total += item.calTotal());
-        return total;
+        return this.lineItems.reduce((sum, item) => sum + item.calTotal(), 0);
     }
     getNumber() {
         return this.number;
@@ -35,7 +33,13 @@ class Order {
         return this.total;
     }
     addLineItem(item) {
-        this.lineItems.push(item);
+        if (Array.isArray(item)) {
+            this.lineItems.push(...item);
+        }
+        else {
+            this.lineItems.push(item);
+        }
+        // this.total = this.calculateTotal()
     }
     setOrderedDate(date) {
         this.orderedDate = date;

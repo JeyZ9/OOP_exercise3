@@ -8,8 +8,8 @@ class LineItem {
         this.product = product;
     }
     calTotal() {
-        let cal = this.price * this.quantity;
-        return cal;
+        // let cal:number = this.price * this.quantity;
+        return this.price * this.quantity;
     }
     getQuantity() {
         return this.quantity;

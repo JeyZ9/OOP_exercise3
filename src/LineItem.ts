@@ -12,8 +12,8 @@ export class LineItem {
     }
 
     public calTotal():number {
-        let cal = this.price * this.quantity;
-        return cal;
+        // let cal:number = this.price * this.quantity;
+        return this.price * this.quantity;
     }
 
     public getQuantity():number {

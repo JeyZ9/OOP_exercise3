@@ -19,10 +19,8 @@ export class Order {
         this.total = total ?? 0;
     }
 
-    public calculateTotal():number {
-        let total = 0;
-        this.lineItems.forEach(item => total += item.calTotal());
-        return total;
+    public calculateTotal(): number {
+        return this.lineItems.reduce((sum, item) => sum + item.calTotal(), 0);
     }
 
     public getNumber():string {
@@ -49,8 +47,13 @@ export class Order {
         return this.total;
     }
 
-    public addLineItem(item:LineItem):void{
-        this.lineItems.push(item);
+    public addLineItem(item:LineItem | LineItem[]):void{
+        if(Array.isArray(item)){
+            this.lineItems.push(...item);
+        }else{
+            this.lineItems.push(item);
+        }
+        // this.total = this.calculateTotal()
     }
 
     public setOrderedDate(date:string):void {
