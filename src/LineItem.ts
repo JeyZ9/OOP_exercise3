@@ -28,10 +28,6 @@ export class LineItem {
         return this.product;
     }
 
-    public setQuantity(qty:number):void{
-        this.quantity = qty;
-    }
-
     public setPrice(price:number):void {
         this.price = price;
     }
@@ -40,8 +36,11 @@ export class LineItem {
         this.product = product;
     }
 
+    // public toString():string {
+    //     return `LineItem[quantity=${this.quantity}, price=${this.price}, product=${this.product.toString()}]`;
+    // }
     public toString():string {
-        return `LineItem[quantity=${this.quantity}, price=${this.price}, product=${this.product.toString()}]`;
+        return `ชื่อ: ${this.product.getName()} ราคาต่อหน่วย: ${this.price} จำนวน: ${this.quantity}`
     }
 
 }

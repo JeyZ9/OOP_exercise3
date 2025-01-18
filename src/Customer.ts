@@ -1,15 +1,18 @@
+import { Account } from './Account';
 import { WebUser } from './WebUser';
 
 export class Customer {
     private id: string;
     private webUser:WebUser;
+    private account:Account;
     private address: string;
     private phone:string;
     private email:string;
 
-    constructor(id:string, webUser:WebUser, address:string, phone:string, email:string){
+    constructor(id:string, webUser:WebUser, account:Account,address:string, phone:string, email:string){
         this.id = id;
         this.webUser = webUser;
+        this.account = account;
         this.address = address;
         this.phone = phone;
         this.email = email;
@@ -21,6 +24,10 @@ export class Customer {
 
     public getWebUser():WebUser {
         return this.webUser;
+    }
+
+    public getAccount():Account {
+        return this.account;
     }
 
     public getAddress():string{
@@ -43,6 +50,10 @@ export class Customer {
         this.webUser = webUser;
     }
 
+    public setAccount(acc:Account):void {
+        this.account = acc;
+    }
+
     public setAddress(address:string):void{
         this.address = address;
     }
@@ -56,6 +67,6 @@ export class Customer {
     }
 
     public toString():string {
-        return `Customer[id=${this.id}, WebUser={${this.webUser.toString()}} address=${this.address}, phone=${this.phone}, email=${this.email}]`
+        return `Customer[id=${this.id}, WebUser={${this.webUser.toString()}}, account={${this.account.toString()}} address=${this.address}, phone=${this.phone}, email=${this.email}]`
     }
 }

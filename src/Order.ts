@@ -1,5 +1,6 @@
 import { LineItem } from "./LineItem";
 import { OrderStatus } from "./OrderStatus";
+import { Payment } from "./Payment";
 
 export class Order {
     private number:string;
@@ -9,6 +10,7 @@ export class Order {
     private status:OrderStatus;
     private total:number;
     private lineItems:LineItem[] = [];
+    private payments:Payment[] = [];
 
     constructor(number:string, orderedDate:string, shippedDate:string, shipToAddress:string, status:OrderStatus, total:number) {
         this.number = number;
@@ -49,11 +51,28 @@ export class Order {
 
     public addLineItem(item:LineItem | LineItem[]):void{
         if(Array.isArray(item)){
-            this.lineItems.push(...item);
+            const add = item.flat()
+            this.lineItems.push(...add);
         }else{
             this.lineItems.push(item);
         }
         // this.total = this.calculateTotal()
+    }
+
+    public getLineItem():LineItem[] {
+        return this.lineItems.flat();
+    }
+
+    public displayLineItem():string{
+        return this.lineItems.map(item => item.toString()).toString();
+    }
+
+    public addPayment(pay:Payment | Payment[]):void {
+        if(Array.isArray(pay)){
+            this.payments.push(...pay);
+        }else{
+            this.payments.push(pay);
+        }
     }
 
     public setOrderedDate(date:string):void {

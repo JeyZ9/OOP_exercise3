@@ -4,6 +4,7 @@ exports.Order = void 0;
 class Order {
     constructor(number, orderedDate, shippedDate, shipToAddress, status, total) {
         this.lineItems = [];
+        this.payments = [];
         this.number = number;
         this.orderedDate = orderedDate;
         this.shippedDate = shippedDate;
@@ -34,12 +35,27 @@ class Order {
     }
     addLineItem(item) {
         if (Array.isArray(item)) {
-            this.lineItems.push(...item);
+            const add = item.flat();
+            this.lineItems.push(...add);
         }
         else {
             this.lineItems.push(item);
         }
         // this.total = this.calculateTotal()
+    }
+    getLineItem() {
+        return this.lineItems.flat();
+    }
+    displayLineItem() {
+        return this.lineItems.map(item => item.toString()).toString();
+    }
+    addPayment(pay) {
+        if (Array.isArray(pay)) {
+            this.payments.push(...pay);
+        }
+        else {
+            this.payments.push(pay);
+        }
     }
     setOrderedDate(date) {
         this.orderedDate = date;
