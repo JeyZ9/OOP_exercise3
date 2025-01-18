@@ -55,6 +55,10 @@ console.log("#######################User1#####################");
 console.log("Name:", customer1.webUser.getLoginId());
 console.log("Cart:", customer1.account.shoppingCart.getLineItem());
 console.log("Orders:", customer1.account.getOrder());
+console.log("\n#######################User2#####################");
+console.log("Name:", customer2.webUser.getLoginId());
+console.log("Cart:", customer2.account.shoppingCart.getLineItem());
+console.log("Orders:", customer1.account.getOrder());
 // console.log("#######################User1#####################")
 // console.log(order1.toString());
 // console.log("#######################Cart1##########################")
