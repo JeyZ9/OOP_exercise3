@@ -124,6 +124,13 @@ export class Account{
             this.orderLists.push(order);
         }
     }
+    public addPayment(pay:Payment | Payment[]):void{
+        if(Array.isArray(pay)){
+            this.payment.push(...pay);
+        }else{
+            this.payment.push(pay);
+        }
+    }
 
     // public makeOrder(order:Order):void {
     //     order.addLineItem(this.shoppingCart.getListItem());
