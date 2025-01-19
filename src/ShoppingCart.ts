@@ -19,7 +19,6 @@ export class ShoppingCart{
     }
 
     public getLineItem():LineItem[]{
-
         return this.lineItems;
     }
 
@@ -36,7 +35,12 @@ export class ShoppingCart{
     // }
 
     public addLineItem(item:LineItem):void{
-        this.lineItems.push(item);
+        if(Array.isArray(item)){
+            const add = item.flat()
+            this.lineItems.push(...add);
+        }else{
+            this.lineItems.push(item);
+        }
     }
 
     public getListItem():LineItem[]{

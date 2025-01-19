@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// import { AccountDTO } from "./dto/AccountDTO";
+// import { CustomerDTO } from "./dto/CustomerDTO";
 const OrderStatus_1 = require("./OrderStatus");
 const UserSate_1 = require("./UserSate");
 const { Product } = require("./Product");
@@ -36,8 +38,8 @@ const payment1 = new Payment("py001", "pay", 1000, "credit");
 const payment2 = new Payment("py001", "pay", 1000, "credit");
 const cart1 = new ShoppingCart(dateFormat());
 const cart2 = new ShoppingCart(dateFormat());
-cart1.addLineItem(listItem1);
 cart2.addLineItem(listItem2);
+cart1.addLineItem(listItem1);
 const order1 = new Order("or001", dateFormat(), dateFormat(), "Nakhon Pathom", OrderStatus_1.OrderStatus.HOLD, 0);
 order1.addLineItem(cart1.getListItem());
 order1.addPayment(payment1);
@@ -56,14 +58,15 @@ account2.addPayment(payment2);
 const customer1 = new Customer("01", webUser1, account1, "Nakhon Pathom", "0656683656", "jey@gmail.com");
 const customer2 = new Customer("02", webUser2, account2, "Ratchaburi", "0987819512", "rut@gmail.com");
 console.log("#######################User1#####################");
-console.log("Name:", customer1.webUser.getLoginId());
-console.log("Cart:", customer1.account.shoppingCart.getLineItem());
-console.log("Orders:", customer1.account.getOrder());
+// console.log("Name:", customer1.webUser.getLoginId());
+// console.log("Cart:", customer1.account.shoppingCart.getLineItem());
+// console.log("Orders:", customer1.account.getOrder());
+console.log(customer1.displayClass());
 console.log("\n#######################User2#####################");
-console.log("Name:", customer2.webUser.getLoginId());
-console.log("Cart:", customer2.account.shoppingCart.getLineItem());
-console.log("Orders:", customer1.account.getOrder());
-console.log("Account:", customer1.getAccount());
+// console.log("Name:", customer2.webUser.getLoginId());
+// console.log("Cart:", customer2.getAccount().getShoppingCart().getLineItem());
+// console.log("Orders:", customer1.getAccount().getOrder());
+console.log(customer2.displayClass());
 // console.log("#######################User1#####################")
 // console.log(order1.toString());
 // console.log("#######################Cart1##########################")
@@ -78,3 +81,21 @@ console.log("Account:", customer1.getAccount());
 // console.log("#################################################")
 // console.log(order1.getLineItem());
 // console.log(order1.calculateTotal())
+// const mapToDTO = (customer: Customer): CustomerDTO => {
+//     return {
+//       name: customer.webUser.getLoginId(),
+//       cart: customer
+//         ?.getAccount()
+//         ?.getShoppingCart()
+//         ?.getLineItem()
+//         ?.getProduct()
+//         ?.getName() || null, 
+//       order: customer
+//         ?.getAccount()
+//         ?.getOrder()
+//         ?.getLineItem()
+//         ?.getProduct()
+//         ?.getName() || null,
+//       total: customer.getAccount()?.getOrder()?.calculateTotal() || 0,
+//     };
+//   };

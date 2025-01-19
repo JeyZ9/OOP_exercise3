@@ -46,6 +46,38 @@ class Customer {
     setEmail(email) {
         this.email = email;
     }
+    displayClass() {
+        const getCart = this.account.getShoppingCart().getLineItem().map(item => {
+            // console.log(item.getProduct().getName())
+            return item.getProduct().getName();
+        }).join(",");
+        // const orderItem = this.account.getOrder().map(item => {
+        //     item.getLineItem().map(item => {
+        //         // console.log(item)
+        //         return item.getProduct().getName()
+        //     }).join(",")
+        // }).join(",");
+        const getOrder = this.account.getOrder().map(item => {
+            // return item.getLineItem();
+            // console.log(item.getLineItem())
+            return item.getLineItem().map(i => {
+                // console.log(i.getProduct().getName());
+                return i.getProduct().getName();
+                // return i;
+                // }).join(","+"\n")
+            }).join(",");
+        });
+        // console.log("TEST: ", getCart)
+        return `
+            [
+                name: ${this.webUser.getLoginId()},
+                cart: ${getCart},
+                order: ${getOrder},
+                total: ${this.account.getOrder().map(item => item.calculateTotal())} ฿
+            ]
+        `;
+        // return ``;
+    }
     toString() {
         return `Customer[id=${this.id}, WebUser={${this.webUser.toString()}}, account={${this.account.toString()}} address=${this.address}, phone=${this.phone}, email=${this.email}]`;
     }

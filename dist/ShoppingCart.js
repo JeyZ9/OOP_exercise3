@@ -27,7 +27,13 @@ class ShoppingCart {
     //     this.account = acc;
     // }
     addLineItem(item) {
-        this.lineItems.push(item);
+        if (Array.isArray(item)) {
+            const add = item.flat();
+            this.lineItems.push(...add);
+        }
+        else {
+            this.lineItems.push(item);
+        }
     }
     getListItem() {
         // return this.lineItems.map(item => item.toString());
