@@ -34,7 +34,7 @@ export class ShoppingCart{
     //     this.account = acc;
     // }
 
-    public addLineItem(item:LineItem):void{
+    public addLineItem(item:LineItem | LineItem[]):void{
         if(Array.isArray(item)){
             const add = item.flat()
             this.lineItems.push(...add);

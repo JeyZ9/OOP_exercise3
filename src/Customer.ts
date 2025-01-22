@@ -1,6 +1,5 @@
 import { Account } from './Account';
 import { WebUser } from './WebUser';
-import { LineItem } from './LineItem';
 
 export class Customer {
     private id: string;

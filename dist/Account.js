@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Account = void 0;
+const ShoppingCart_1 = require("./ShoppingCart");
 class Account {
-    constructor(id, shoppingCart, billingAddress, isClosed, open, close) {
+    constructor(id, billingAddress, isClosed, open, close) {
         // private customer:Customer;
         this.orderLists = [];
         // private shoppingCart:ShoppingCart;
         this.payment = [];
         this.id = id;
-        this.shoppingCart = shoppingCart;
+        this.shoppingCart = new ShoppingCart_1.ShoppingCart(new Date().toLocaleDateString());
         this.billingAddress = billingAddress;
         this.isClosed = isClosed;
         this.open = open;
@@ -46,9 +47,9 @@ class Account {
     getShoppingCart() {
         return this.shoppingCart;
     }
-    // public getPayment():Payment{
-    //     return this.payment;
-    // }
+    getPayment() {
+        return this.payment;
+    }
     getBillingAddress() {
         return this.billingAddress;
     }

@@ -28,7 +28,7 @@ const listItem1 = [
     new LineItem(10, 12, product2),
     new LineItem(10, 12, product3),
     new LineItem(10, 12, product4)
-]
+] 
 const listItem2 = [ 
     new LineItem(10, 12, product1),
     new LineItem(10, 12, product4),
@@ -44,27 +44,30 @@ const payment2 = new Payment("py001", "pay", 1000, "credit");
 const cart1 = new ShoppingCart(dateFormat())
 const cart2 = new ShoppingCart(dateFormat())
 
-cart2.addLineItem(listItem2);
-cart1.addLineItem(listItem1);
+// cart2.addLineItem(listItem2);
+// cart1.addLineItem(listItem1);
 
-const order1 = new Order("or001", dateFormat(), dateFormat(), "Nakhon Pathom", OrderStatus.HOLD, 0);
-order1.addLineItem(cart1.getListItem());
-order1.addPayment(payment1);
-order1.setTotal(order1.calculateTotal());
 // console.log(order1.calculateTotal());
 
-const order2 = new Order("or002", dateFormat(), dateFormat(), "Ratchaburi", OrderStatus.HOLD, 0);
-order2.addLineItem(cart2.getLineItem());
-order2.addPayment(payment2);
-order2.setTotal(order2.calculateTotal());
+const order1 = new Order("or001", dateFormat(), dateFormat(), "Nakhon Pathom", OrderStatus.HOLD, 0);
+order1.addLineItem(listItem1);
+order1.addPayment(payment1);
+order1.setTotal(order1.calculateTotal());
 
 const account1 = new Account("ac01", cart1, "Nakhon Pathom", false, "07:00", "16:00")
 account1.addOrderList(order1);
 account1.addPayment(payment1);
+account1.getShoppingCart().addLineItem(listItem1);
 
-const account2 = new Account("ac02", cart2, "Ratchaburi", false, "07:00", "16:00")
+const order2 = new Order("or002", dateFormat(), dateFormat(), "Ratchaburi", OrderStatus.HOLD, 0);
+order2.addLineItem(listItem2);
+order2.addPayment(payment2);
+order2.setTotal(order2.calculateTotal());
+
+const account2 = new Account("ac02", cart2, "Ratchaburi", false, "22/1/2568", "2/3/2568")
 account2.addOrderList(order2);
 account2.addPayment(payment2);
+account2.getShoppingCart().addLineItem(listItem2);
 
 const customer1 = new Customer("01", webUser1, account1, "Nakhon Pathom", "0656683656", "jey@gmail.com")
 const customer2 = new Customer("02", webUser2, account2, "Ratchaburi", "0987819512", "rut@gmail.com")

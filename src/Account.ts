@@ -15,9 +15,9 @@ export class Account{
     private open:string;
     private close:string;
 
-    constructor(id:string, shoppingCart:ShoppingCart, billingAddress:string, isClosed:boolean, open:string, close:string) {
+    constructor(id:string, billingAddress:string, isClosed:boolean, open:string, close:string) {
         this.id = id;
-        this.shoppingCart = shoppingCart;
+        this.shoppingCart = new ShoppingCart(new Date().toLocaleDateString());
         this.billingAddress = billingAddress;
         this.isClosed = isClosed;
         this.open = open;
@@ -61,9 +61,9 @@ export class Account{
         return this.shoppingCart;
     }
 
-    // public getPayment():Payment{
-    //     return this.payment;
-    // }
+    public getPayment():Payment[]{
+        return this.payment;
+    }
 
     public getBillingAddress():string {
         return this.billingAddress;
