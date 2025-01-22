@@ -12,7 +12,6 @@ export class LineItem {
     }
 
     public calTotal():number {
-        // let cal:number = this.price * this.quantity;
         return this.price * this.quantity;
     }
 
@@ -42,5 +41,7 @@ export class LineItem {
     public toString():string {
         return `ชื่อ: ${this.product.getName()} ราคาต่อหน่วย: ${this.price} จำนวน: ${this.quantity}`
     }
+
+    // New Commit
 
 }
